@@ -10,9 +10,9 @@ const displayCategory = (categories, categories_id) => {
         const categoryDiv = document.createElement('div');
         categoryDiv.classList.add('col');
         categoryDiv.innerHTML = `
-            <div>
-                <div onclick="categoryId(category_id)" class="p-2 text-white rounded-3 bg-secondary">${category.category_name}</div>
-            </div>
+            
+            <div onclick="categoryId(category_id)" class=" p-2 text-white rounded-3 bg-secondary">${category.category_name}</div>
+            
         `
         categoryContainer.appendChild(categoryDiv);
     });
@@ -42,7 +42,7 @@ const displayNewsId = categoryId => {
                         <div class="col-md-8">
                             <div class="card-body">
                                 <h5 class="card-title">${news.title}</h5>
-                                <p class="card-text" class="card-text" style="max-height: 400px;white-space: nowrap; overflow: hidden;  text-overflow: ellipsis">${news.details}</p> 
+                                <p class="card-text" class="card-text" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis">${news.details}</p> 
                                 <div class="card-text d-flex align-items-center mt-3">
                                     <div class="d-flex align-items-center">
                                         <img src="${news.author.img}" style="height: 40px;width: 40px;" class="rounded-circle"></img>
@@ -51,9 +51,7 @@ const displayNewsId = categoryId => {
                                             <p class = "m-0">${news.author.published_date}</p>
                                         </div>
                                     </div>
-                                    <h6 class="ms-5"> ${news.total_view}</h6>
-                                    <p><i class="fa-solid fa-eyes"></i></p>
-
+                                    <h6 class="ms-5"><i class="fa-solid fa-eye"></i> ${news.total_view}</h6>
                                 </div>
                             </div>
                         </div>
