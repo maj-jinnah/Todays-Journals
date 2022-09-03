@@ -2,24 +2,35 @@
 
 fetch('https://openapi.programming-hero.com/api/news/categories')
     .then(res => res.json())
-    .then(data => displayCategory(data.data.news_category, data.data.news_category))
+    .then(data => displayCategory(data.data.news_category))
 
-const displayCategory = (categories, categories_id) => {
+const displayCategory = (categories) => {
     const categoryContainer = document.getElementById('categoryContainer');
+    // console.log(categories);
+    
     categories.forEach(category => {
         const categoryDiv = document.createElement('div');
         categoryDiv.classList.add('col');
         categoryDiv.innerHTML = `
-            <div onclick="categoryId(category_id)" class=" p-2 text-white rounded-3 bg-secondary">${category.category_name}</div>
+            <div onclick="eachCategoryId('${category.category_id}')" class=" p-2 text-white rounded-3 bg-secondary">${category.category_name}</div>
         `
         categoryContainer.appendChild(categoryDiv);
     });
 
-    categories_id.forEach(category_id => {
+    categories.forEach(category_id => {
         const categoryId = category_id.category_id;
-        displayNewsId(categoryId);
+        // displayNewsId(categoryId);
+        
     });
 }
+
+const eachCategoryId = category_id =>{
+    // console.log(category_id);
+    displayNewsId(category_id);
+    
+}
+
+
 const displayNewsId = categoryId => {
     const url = `https://openapi.programming-hero.com/api/news/category/${categoryId}`
     fetch(url)
@@ -27,8 +38,10 @@ const displayNewsId = categoryId => {
         .then(data => displayNews(data.data))
 
     const displayNews = (newses) => {
-        console.log(newses);
+        // console.log(newses);
         const newsArea = document.getElementById('newsarea');
+
+        newsArea.textContent= '';
         newses.forEach(news => {
             const newsDiv = document.createElement('div')
             newsDiv.innerHTML = `
@@ -60,3 +73,4 @@ const displayNewsId = categoryId => {
         })
     };
 }
+
