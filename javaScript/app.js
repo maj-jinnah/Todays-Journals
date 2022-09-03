@@ -10,9 +10,7 @@ const displayCategory = (categories, categories_id) => {
         const categoryDiv = document.createElement('div');
         categoryDiv.classList.add('col');
         categoryDiv.innerHTML = `
-            
             <div onclick="categoryId(category_id)" class=" p-2 text-white rounded-3 bg-secondary">${category.category_name}</div>
-            
         `
         categoryContainer.appendChild(categoryDiv);
     });
