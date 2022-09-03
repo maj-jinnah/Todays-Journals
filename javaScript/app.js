@@ -48,6 +48,7 @@ const displayNewsId = categoryId => {
 
         newsArea.textContent= '';
         newses.forEach(news => {
+            // console.log(news);
             const newsDiv = document.createElement('div')
             loadSpinner(true);
             newsDiv.innerHTML = `
@@ -59,7 +60,7 @@ const displayNewsId = categoryId => {
                         <div class="col-md-8">
                             <div class="card-body">
                                 <h5 class="card-title">${news.title}</h5>
-                                <p class="card-text" class="card-text" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis">${news.details}</p> 
+                                <p class="card-text" class="card-text">${news.details.slice(0,200)}... </p> 
                                 <div class="card-text d-flex align-items-center mt-3">
                                     <div class="d-flex align-items-center">
                                         <img src="${news.author.img}" style="height: 40px;width: 40px;" class="rounded-circle"></img>
@@ -68,7 +69,8 @@ const displayNewsId = categoryId => {
                                             <p class = "m-0">${news.author.published_date}</p>
                                         </div>
                                     </div>
-                                    <h6 class="ms-5"><i class="fa-solid fa-eye"></i> ${news.total_view}</h6>
+                                    <h6 class="ms-lg-5 ms-md-5 ms-sm-2"><i class="fa-solid fa-eye"></i> ${news.total_view}</h6>
+                                    <p class="ms-lg-5 ms-md-5 ms-sm-2 ps-lg-5" onclick="modalDetails('${news}')"><i class="fa-solid fa-arrow-right"></i></p>
                                 </div>
                             </div>
                         </div>
@@ -77,8 +79,8 @@ const displayNewsId = categoryId => {
             `
             // loadSpinner(true);
             newsArea.appendChild(newsDiv);
-            loadSpinner(false);
         })
+        loadSpinner(false);
     };
 }
 
@@ -90,4 +92,8 @@ const loadSpinner = isSpinning =>{
     else{
         spinner.classList.add('d-none');
     }
+}
+
+const modalDetails = details =>{
+    console.log(details);
 }
