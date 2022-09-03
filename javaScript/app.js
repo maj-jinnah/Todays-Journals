@@ -36,7 +36,7 @@ const displayNewsId = categoryId => {
 
     const displayNews = (newses) => {
         // console.log(newses);
-        loadSpinner(true);
+        
 
         const arrayLength = newses.length;
         // console.log(arrayLength);
@@ -49,6 +49,7 @@ const displayNewsId = categoryId => {
         newsArea.textContent= '';
         newses.forEach(news => {
             const newsDiv = document.createElement('div')
+            loadSpinner(true);
             newsDiv.innerHTML = `
                 <div class="card mb-3 w-75">
                     <div class="row g-0">
@@ -74,7 +75,7 @@ const displayNewsId = categoryId => {
                     </div>
                 </div>
             `
-            loadSpinner(true);
+            // loadSpinner(true);
             newsArea.appendChild(newsDiv);
             loadSpinner(false);
         })
