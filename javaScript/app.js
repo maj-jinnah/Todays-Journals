@@ -48,7 +48,7 @@ const displayNewsId = categoryId => {
 
         newsArea.textContent= '';
         newses.forEach(news => {
-            console.log(news);
+            // console.log(news);
             const newsDiv = document.createElement('div');
             loadSpinner(true);
             newsDiv.innerHTML = `
@@ -65,11 +65,11 @@ const displayNewsId = categoryId => {
                                     <div class="d-flex align-items-center">
                                         <img src="${news.author.img}" style="height: 40px;width: 40px;" class="rounded-circle"></img>
                                         <div class="ms-3">
-                                            <h6>${news.author.name}</h4>
+                                            <h6>${news.author.name ? news.author.name : 'No Author Name Found'}</h4>
                                             <p class = "m-0">${news.author.published_date}</p>
                                         </div>
                                     </div>
-                                    <h6 class="ms-lg-5 ms-md-5 ms-sm-2"><i class="fa-solid fa-eye"></i> ${news.total_view}</h6>
+                                    <h6 class="ms-lg-5 ms-md-5 ms-sm-2"><i class="fa-solid fa-eye"></i> ${news.total_view? news.total_view : 'No one View Yet'}</h6>
                                     <button class="btn ms-lg-5 ms-md-5 ms-sm-2  px-lg-5" onclick="modalDetails('${news.title}')"  data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-arrow-right"></i></button>
                                 </div>
                             </div>
@@ -94,7 +94,8 @@ const loadSpinner = isSpinning =>{
     }
 }
 
-const modalDetails = title =>{
-    console.log(title);
-
+const modalDetails = (title) =>{
+    // console.log(title);
+    const modalTitle = document.getElementById('modalTitle')
+    modalTitle.innerText = title;
 }
