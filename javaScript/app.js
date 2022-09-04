@@ -48,8 +48,8 @@ const displayNewsId = categoryId => {
 
         newsArea.textContent= '';
         newses.forEach(news => {
-            // console.log(news);
-            const newsDiv = document.createElement('div')
+            console.log(news);
+            const newsDiv = document.createElement('div');
             loadSpinner(true);
             newsDiv.innerHTML = `
                 <div class="card mb-3 w-75">
@@ -70,7 +70,7 @@ const displayNewsId = categoryId => {
                                         </div>
                                     </div>
                                     <h6 class="ms-lg-5 ms-md-5 ms-sm-2"><i class="fa-solid fa-eye"></i> ${news.total_view}</h6>
-                                    <p class="ms-lg-5 ms-md-5 ms-sm-2 ps-lg-5" onclick="modalDetails('${news}')"><i class="fa-solid fa-arrow-right"></i></p>
+                                    <button class="btn ms-lg-5 ms-md-5 ms-sm-2  px-lg-5" onclick="modalDetails('${news.title}')"  data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-arrow-right"></i></button>
                                 </div>
                             </div>
                         </div>
@@ -94,6 +94,7 @@ const loadSpinner = isSpinning =>{
     }
 }
 
-const modalDetails = details =>{
-    console.log(details);
+const modalDetails = title =>{
+    console.log(title);
+
 }
