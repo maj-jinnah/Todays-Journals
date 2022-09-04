@@ -1,8 +1,12 @@
-
-
-fetch('https://openapi.programming-hero.com/api/news/categories')
+const url = `https://openapi.programming-hero.com/api/news/categories`
+try{
+    fetch(url)
     .then(res => res.json())
     .then(data => displayCategory(data.data.news_category))
+}
+catch(error){
+    console.log(error);
+}
 
 const displayCategory = (categories) => {
     const categoryContainer = document.getElementById('categoryContainer');
@@ -30,9 +34,13 @@ const eachCategoryId = category_id =>{
 
 const displayNewsId = categoryId => {
     const url = `https://openapi.programming-hero.com/api/news/category/${categoryId}`
-    fetch(url)
+    try {
+        fetch(url)
         .then(res => res.json())
         .then(data => displayNews(data.data))
+    } catch (error) {
+        console.log(error);
+    }
 
     const displayNews = (newses) => {
         // console.log(newses);
